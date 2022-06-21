@@ -1,8 +1,10 @@
 package com.harshita.retrofitlogin.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.harshita.retrofitlogin.databinding.ActivityLogoutBinding
+import com.harshita.retrofitlogin.utils.SessionManager
 
 class LogoutActivity : AppCompatActivity() {
 
@@ -15,7 +17,11 @@ class LogoutActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnLogout.setOnClickListener {
-            finish()
+            SessionManager.clearData(this)
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+            startActivity(intent)
         }
     }
 }

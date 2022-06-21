@@ -1,5 +1,6 @@
 package com.harshita.retrofitlogin.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -42,6 +43,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             doLogin()
+
+
+
         }
 
         binding.btnRegister.setOnClickListener {
@@ -54,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         val email = binding.txtInputEmail.text.toString()
         val pwd = binding.txtPass.text.toString()
         viewModel.loginUser(email = email, pwd = pwd)
+        val intent = Intent(this,LogoutActivity::class.java)
+        startActivity(intent)
     }
 
     fun doSignup() {
